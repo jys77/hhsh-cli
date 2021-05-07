@@ -12,7 +12,7 @@ if(process.argv.length !== 3) {
 
 const input = process.argv[2];
 
-const spinner = ora(chalk.blue('looking for:' + input + '...')).start();
+const spinner = ora(chalk.blue('looking for: ' + input + '...')).start();
 
 fetch(API_URL, {
     method: 'post',
@@ -24,10 +24,10 @@ fetch(API_URL, {
     .then(res => res.json())
     .then(json => {
         spinner.stop();
-        if(json instanceof Array) {
+        if(json instanceof Array && json.length > 0) {
             const trans = json[0].trans;
             const inputting = json[0].inputting;
-            const head = trans ? ['序号', '缩写含义'] : inputting ? ['序号', '缩写可能的含义'] : ['没有找到'];
+            const head = trans ? ['序号', '缩写的含义'] : inputting ? ['序号', '缩写可能的含义'] : ['没有找到该缩写'];
             const table = new Table({
                 head,
                 chars: { 'top': '' , 'top-mid': '' , 'top-left': '' , 'top-right': ''
@@ -47,6 +47,8 @@ fetch(API_URL, {
             }
             const result = table.toString();
             printResult(result);
+        } else {
+            console.log(chalk.green('不能好好说话了。。。'));
         }
     }).catch(err => {
         console.log(err);
@@ -55,8 +57,6 @@ fetch(API_URL, {
 const printResult = (result) => {
     if(result && result.length > 0) {
         console.log(chalk.green(result));
-    } else {
-        console.log('不能好好说话了。。。')
     }
 }
 
