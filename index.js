@@ -8,6 +8,7 @@ const API_URL = 'https://lab.magiconch.com/api/nbnhhsh/guess';
 
 if(process.argv.length !== 3) {
     console.log('使用方式: hhsh y1s1');
+    return;
 }
 
 const input = process.argv[2];
