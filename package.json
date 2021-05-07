@@ -1,6 +1,6 @@
 {
   "name": "hhsh-cli",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "bin": {
     "hhsh": "index.js"
   },
