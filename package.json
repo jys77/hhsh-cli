@@ -1,7 +1,14 @@
 {
   "name": "hhsh-cli",
   "version": "1.0.0",
+  "bin": {
+    "hhsh": "index.js"
+  },
+  "description": "loop up chinese abbreviation",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "author": "Yunsheng Jiang",
   "license": "MIT",
   "dependencies": {

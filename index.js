@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const fetch = require('node-fetch');
 const chalk = require('chalk');
 const ora = require('ora');
