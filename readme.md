@@ -4,7 +4,7 @@ A command tool version of [nbnhhsh](https://github.com/itorr/nbnhhsh).
 
 ## Install
 ```
-npm -g i hhsh-cli
+npm i -g hhsh-cli
 ```
 
 ## How to use
