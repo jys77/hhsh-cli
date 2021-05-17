@@ -28,7 +28,12 @@ fetch(API_URL, {
         if(json instanceof Array && json.length > 0) {
             const trans = json[0].trans;
             const inputting = json[0].inputting;
-            const head = trans ? ['序号', '缩写的含义'] : inputting ? ['序号', '缩写可能的含义'] : ['没有找到该缩写'];
+            const head =
+                trans && trans.length > 0
+                    ? ['序号', '缩写的含义']
+                    : inputting && inputting.length > 0
+                    ? ['序号', '缩写可能的含义']
+                    : [];
             const table = new Table({
                 head,
                 chars: { 'top': '' , 'top-mid': '' , 'top-left': '' , 'top-right': ''
@@ -45,6 +50,8 @@ fetch(API_URL, {
                 inputting.forEach((term, index) => {
                     table.push([`${index + 1}`, term]);
                 })
+            } else {
+                table.push(['没有找到该缩写']);
             }
             const result = table.toString();
             printResult(result);
